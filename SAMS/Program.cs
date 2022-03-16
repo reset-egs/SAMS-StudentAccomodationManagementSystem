@@ -3,6 +3,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddScoped<IApartmentService, ADOApartmentService>();
+builder.Services.AddScoped<IDormitoryService, ADODormitoryService>();
+builder.Services.AddScoped<ILeasingService, ADOLeasingService>();
+builder.Services.AddScoped<IRoomService, ADORoomService>();
+builder.Services.AddScoped<IStudentService, ADOStudentService>();
+
+builder.Services.AddScoped<ADOApartment>();
+builder.Services.AddScoped<ADODormitory>();
+builder.Services.AddScoped<ADOLeasing>();
+builder.Services.AddScoped<ADORoom>();
+builder.Services.AddScoped<ADOStudent>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

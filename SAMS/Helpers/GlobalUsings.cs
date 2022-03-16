@@ -1,0 +1,11 @@
+﻿global using System;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.RazorPages;
+global using SAMS.Models;
+global using SAMS.Interfaces;
+global using SAMS.Services.ADOApartmentServices;
+global using SAMS.Services.ADODormitoryServices;
+global using SAMS.Services.ADOLeasingServices;
+global using SAMS.Services.ADORoomServices;
+global using SAMS.Services.ADOStudentServices;
+global using System.Data.SqlClient;

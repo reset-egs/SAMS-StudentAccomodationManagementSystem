@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace SAMS.Pages
+﻿namespace SAMS.Pages
 {
     public class IndexModel : PageModel
     {
