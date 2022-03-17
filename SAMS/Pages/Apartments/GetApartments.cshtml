@@ -1,0 +1,29 @@
+﻿@page
+@model SAMS.Pages.Apartments.GetApartmentsModel
+@{
+    ViewData["Title"] = "All Apartments";
+}
+
+<h5>All apartments</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Apartment No.</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Vacancies</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Apartments)
+        {
+            <tr>
+                <td>@item.Appart_No</td>
+                <td>@item.Address</td>
+                <td>@item.Types</td>
+                <td><a asp-page="DeleteCountry" asp-route-id="@item.Appart_No" class="btn btn-success">Show vacant rooms</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

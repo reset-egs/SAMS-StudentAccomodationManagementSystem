@@ -1,0 +1,31 @@
+﻿@page
+@model SAMS.Pages.Students.GetStudentsModel
+@{
+    ViewData["Title"] = "All Students";
+}
+
+<h5>All Students</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student No.</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Has a room</th>
+            <th>Registration date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Students)
+        {
+            <tr>
+                <td>@item.Student_No</td>
+                <td>@item.SName</td>
+                <td>@item.SAddress</td>
+                <td>@item.Has_Room</td>
+                <td>@item.Registration_Date</td>
+            </tr>
+        }
+    </tbody>
+</table>
