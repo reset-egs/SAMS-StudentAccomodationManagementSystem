@@ -1,0 +1,29 @@
+﻿@page
+@model SAMS.Pages.Rooms.GetRoomsModel
+@{
+    ViewData["Title"] = "All Rooms";
+}
+
+<h5>All Rooms</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Place No.</th>
+            <th>Room No.</th>
+            <th>Rent Per Semester</th>
+            <th>Occupied</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Rooms)
+        {
+            <tr>
+                <td>@item.Place_No</td>
+                <td>@item.Room_No</td>
+                <td>@item.Rent_Per_Semester</td>
+                <td>@item.Occupied</td>
+            </tr>
+        }
+    </tbody>
+</table>

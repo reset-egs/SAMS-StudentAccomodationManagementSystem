@@ -1,0 +1,27 @@
+﻿@page
+@model SAMS.Pages.Leasings.GetLeasingsModel
+@{
+    ViewData["Title"] = "All Leasings";
+}
+
+<h5>All Leasings</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Leasing No.</th>
+            <th>From:</th>
+            <th>To:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Leasings)
+        {
+            <tr>
+                <td>@item.Leasing_No</td>
+                <td>@item.Date_From</td>
+                <td>@item.Date_To</td>
+            </tr>
+        }
+    </tbody>
+</table>
