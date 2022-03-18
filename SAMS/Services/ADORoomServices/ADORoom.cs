@@ -25,19 +25,25 @@
                     {
                         Room r = new Room();
                         r.Place_No = Convert.ToInt32(reader[0]);
-                        r.Room_No = Convert.ToInt32(reader[1]);
-                        r.Rent_Per_Semester = Convert.ToDecimal(reader[2]);
-                        r.Occupied = Convert.ToBoolean(reader[3]);
+                        r.Rent_Per_Semester = Convert.ToInt32(reader[1]);
+                        r.Occupied = Convert.ToBoolean(reader[2]);
+                        r.Room_No = Convert.ToInt32(reader[3]);
+                        if(r.Dormitory_No.HasValue || r.Appart_No.HasValue)
+                        {
+                            r.Dormitory_No = Convert.ToInt32(reader[4]);
+                            r.Appart_No = Convert.ToInt32(reader[5]);
+                        }
+                        else
+                        {
+                            r.Dormitory_No = null;
+                            r.Appart_No = null;
+                        }
+
                         results.Add(r);
                     }
                 }
             }
             return results;
-        }
-
-        public IEnumerable<Room> GetVacantRooms()
-        {
-            throw new NotImplementedException();
         }
 
         public void UpdateRoom(Room room)
