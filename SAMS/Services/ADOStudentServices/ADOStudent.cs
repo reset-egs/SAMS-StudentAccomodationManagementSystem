@@ -23,7 +23,7 @@
         public IEnumerable<Student> GetStudents()
         {
             List<Student> results = new List<Student>();
-            string query = "SELECT * FROM Students";
+            string query = "SELECT * FROM Student";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

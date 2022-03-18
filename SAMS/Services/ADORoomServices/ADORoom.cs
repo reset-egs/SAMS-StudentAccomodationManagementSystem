@@ -13,7 +13,7 @@
         public IEnumerable<Room> GetRooms()
         {
             List<Room> results = new List<Room>();
-            string query = "SELECT * FROM Rooms";
+            string query = "SELECT * FROM Room";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

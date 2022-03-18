@@ -13,7 +13,7 @@
         public IEnumerable<Dormitory> GetDormitories()
         {
             List<Dormitory> results = new List<Dormitory>();
-            string query = "SELECT * FROM Dormitories";
+            string query = "SELECT * FROM Dormitory";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

@@ -18,7 +18,7 @@
         public IEnumerable<Leasing> GetLeasings()
         {
             List<Leasing> results = new List<Leasing>();
-            string query = "SELECT * FROM Leasings";
+            string query = "SELECT * FROM Leasing";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
