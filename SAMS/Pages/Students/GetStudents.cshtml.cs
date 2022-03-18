@@ -13,10 +13,18 @@ namespace SAMS.Pages.Students
 
         [BindProperty]
         public IEnumerable<Student> Students { get; set; }
+        public bool WaitingListOpen { get; set; }
 
         public void OnGet()
         {
             Students = service.GetStudents();
+            WaitingListOpen = false;
+        }
+        public void OnPost()
+        {
+            Students = service.GetWaitingList();
+            WaitingListOpen = true;
+
         }
     }
 }
