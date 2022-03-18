@@ -1,10 +1,21 @@
 ﻿@page
 @model SAMS.Pages.Students.GetStudentsModel
 @{
-    ViewData["Title"] = "All Students";
+    ViewData["Title"] = "List of Students";
 }
-
+@if (Model.WaitingListOpen == false)
+{
 <h5>All Students</h5>
+<form method="post">
+        <button  type="submit" class="btn btn-primary">Waiting List</button>
+    </form>
+}
+else
+{
+    <h5>Waiting list</h5>
+
+        <a asp-page="/GetStudents"class="btn btn-primary">List of All Students</a>
+}
 
 <table class="table">
     <thead>
@@ -29,3 +40,4 @@
         }
     </tbody>
 </table>
+
