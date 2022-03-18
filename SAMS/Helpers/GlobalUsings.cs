@@ -9,3 +9,4 @@ global using SAMS.Services.ADOLeasingServices;
 global using SAMS.Services.ADORoomServices;
 global using SAMS.Services.ADOStudentServices;
 global using System.Data.SqlClient;
+global using System.ComponentModel.DataAnnotations;
