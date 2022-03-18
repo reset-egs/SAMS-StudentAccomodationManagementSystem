@@ -13,10 +13,6 @@
             return service.GetRooms();
         }
 
-        public IEnumerable<Room> GetVacantRooms()
-        {
-            return service.GetVacantRooms();
-        }
 
         public void UpdateRoom(Room room)
         {

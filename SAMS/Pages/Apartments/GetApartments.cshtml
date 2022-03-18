@@ -22,7 +22,7 @@
                 <td>@item.Appart_No</td>
                 <td>@item.Address</td>
                 <td>@item.Types</td>
-                <td><a asp-page="DeleteCountry" asp-route-id="@item.Appart_No" class="btn btn-success">Show vacant rooms</a></td>
+                <td><a asp-page="Vacancies" asp-route-no="@item.Appart_No" class="btn btn-success">Show vacant rooms</a></td>
             </tr>
         }
     </tbody>
