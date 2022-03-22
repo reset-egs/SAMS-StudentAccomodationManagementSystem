@@ -121,5 +121,40 @@
                 }
             } 
         }
+
+        public StudentLeasingsViewModel GetStudentLeasings(int no)
+        {
+            StudentLeasingsViewModel s = new StudentLeasingsViewModel();
+            string query = $"SELECT Student.Student_No, Student.SName, Leasing.Leasing_No, Leasing.Place_No, Room.Rent_Per_Semester, Room.Dormitory_No, Room.Appart_No FROM Student JOIN Leasing ON Student.Student_No = Leasing.Student_No JOIN Room ON Leasing.Place_No = Room.Place_No WHERE Student.Student_No = {no}";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        s.Student_No = Convert.ToInt32(reader[0]);
+                        s.SName = Convert.ToString(reader[1]);
+                        s.Leasing_No = Convert.ToInt32(reader[2]);
+                        s.Place_No = Convert.ToInt32(reader[3]);
+                        s.Rent_Per_Semester = Convert.ToInt32(reader[4]);
+                        if (reader.IsDBNull(5))
+                        {
+                            s.Dormitory_No = null;
+                            s.Appart_No = Convert.ToInt32(reader[6]);
+                        }
+                        else
+                        {
+                            s.Dormitory_No = Convert.ToInt32(reader[5]);
+                            s.Appart_No = null;
+                        }
+                        return s;
+                    }
+                }
+            }
+            return s;
+        }
     }
 }
