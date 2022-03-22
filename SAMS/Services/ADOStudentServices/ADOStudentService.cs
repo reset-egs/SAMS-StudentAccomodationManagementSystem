@@ -13,6 +13,7 @@
             service.AddStudent(student);
         }
 
+
         public Student GetStudentByNo(int no)
         {
             return service.GetStudentByNo(no);
@@ -32,5 +33,6 @@
         {
             service.UpdateStudent(student);
         }
+
     }
 }

@@ -37,7 +37,7 @@
         public IEnumerable<Room> GetVacantRooms(int no)
         {
             List<Room> results = new List<Room>();
-            string query = $"SELECT * FROM Room WHERE Room.Appart_No = {no}";
+            string query = $"SELECT * FROM Room WHERE Room.Appart_No = {no} AND Room.Occupied != 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

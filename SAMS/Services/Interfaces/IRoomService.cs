@@ -3,6 +3,6 @@
     public interface IRoomService
     {
         public IEnumerable<Room> GetRooms();
-        public void UpdateRoom(Room room);
+        public void UpdateRoom(int place_No);
     }
 }
