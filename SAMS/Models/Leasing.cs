@@ -8,5 +8,6 @@
         public int Place_No { get; set; }
         public DateTime Date_From { get; set; }
         public DateTime Date_To { get; set; }
+
     }
 }

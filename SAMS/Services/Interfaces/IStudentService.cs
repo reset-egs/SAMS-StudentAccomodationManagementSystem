@@ -6,6 +6,7 @@
         public Student GetStudentByNo(int no);
         public void UpdateStudent(Student student);
         public void AddStudent(Student student);
+        public void DeleteStudent(int no);
         public IEnumerable<Student> GetWaitingList();
     }
 }

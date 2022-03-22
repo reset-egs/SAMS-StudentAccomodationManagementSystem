@@ -14,6 +14,12 @@
         }
 
 
+        public void DeleteStudent(int no)
+        {
+            service.DeleteStudent(no);
+        }
+
+
         public Student GetStudentByNo(int no)
         {
             return service.GetStudentByNo(no);
