@@ -71,7 +71,7 @@
         public IEnumerable<Student> GetWaitingList()
         {
             List<Student> waitingList = new List<Student>();
-            string query = "SELECT * FROM Student WHERE Student.Registration_Date IS NOT NULL ORDER BY Student.Registration_Date";
+            string query = "SELECT * FROM Student WHERE Student.Has_Room != 1 ORDER BY Student.Registration_Date";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -110,7 +110,16 @@
 
         public void UpdateStudent(Student student)
         {
-            throw new NotImplementedException();
+            string query = $"UPDATE Student SET Has_Room = 1  WHERE Student_No = {student.Student_No}";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    int numberOfRowsAffected = command.ExecuteNonQuery();
+                }
+            } 
         }
     }
 }

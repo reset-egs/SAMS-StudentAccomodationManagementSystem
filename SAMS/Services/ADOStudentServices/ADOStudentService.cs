@@ -13,10 +13,12 @@
             service.AddStudent(student);
         }
 
+
         public void DeleteStudent(int no)
         {
             service.DeleteStudent(no);
         }
+
 
         public Student GetStudentByNo(int no)
         {
@@ -37,5 +39,6 @@
         {
             service.UpdateStudent(student);
         }
+
     }
 }

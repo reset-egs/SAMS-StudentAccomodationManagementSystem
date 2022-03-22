@@ -14,9 +14,9 @@
         }
 
 
-        public void UpdateRoom(Room room)
+        public void UpdateRoom(int place_No)
         {
-            service.UpdateRoom(room);
+            service.UpdateRoom(place_No);
         }
     }
 }

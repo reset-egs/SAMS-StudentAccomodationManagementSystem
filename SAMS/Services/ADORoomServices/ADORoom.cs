@@ -45,10 +45,18 @@
             }
             return results;
         }
-
-        public void UpdateRoom(Room room)
+        public void UpdateRoom (int place_No)
         {
-            throw new NotImplementedException();
+            string query = $"UPDATE Room SET Occupied = 1  WHERE Place_No = {place_No}";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    int numberOfRowsAffected = command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

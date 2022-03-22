@@ -19,6 +19,7 @@
                 <td>@item.Place_No</td>
                 <td>@item.Room_No</td>
                 <td>@item.Rent_Per_Semester</td>
+                <td><a asp-page="/Leasings/CreateLeasing" asp-Route-pNo="@item.Place_No" class="btn btn-primary">Assign room to a student</a></td>
             </tr>
         }
     </tbody>
