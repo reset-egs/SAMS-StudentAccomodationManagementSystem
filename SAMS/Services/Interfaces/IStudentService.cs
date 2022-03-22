@@ -8,5 +8,6 @@
         public void AddStudent(Student student);
         public void DeleteStudent(int no);
         public IEnumerable<Student> GetWaitingList();
+        public StudentLeasingsViewModel GetStudentLeasings(int no);
     }
 }

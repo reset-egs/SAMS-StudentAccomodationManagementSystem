@@ -25,6 +25,11 @@
             return service.GetStudentByNo(no);
         }
 
+        public StudentLeasingsViewModel GetStudentLeasings(int no)
+        {
+            return service.GetStudentLeasings(no);
+        }
+
         public IEnumerable<Student> GetStudents()
         {
             return service.GetStudents();

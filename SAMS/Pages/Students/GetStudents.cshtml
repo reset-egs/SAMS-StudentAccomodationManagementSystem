@@ -37,7 +37,8 @@ else
                 <td>@item.SAddress</td>
                 <td>@item.Has_Room</td>
                 <td>@item.Registration_Date</td>
-                <td><a asp-page="DeleteStudent" asp-route-no="@item.Student_No" class="btn btn-danger">Delete</a></td>
+                <td><a asp-page="DeleteStudent" asp-route-no="@item.Student_No" class="btn btn-danger">Delete</a>
+                    <a asp-page="StudentLeasings" asp-route-no="@item.Student_No" class="btn btn-primary">Leasings</a></td>
             </tr>
         }
     </tbody>
