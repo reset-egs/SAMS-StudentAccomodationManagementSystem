@@ -1,0 +1,32 @@
+﻿@page
+@model SAMS.Pages.WelcomeModel
+@{
+}
+<h3 class="text-center">You are now logged in. You will be redirected in <span id="seconds">3</span> seconds.</h3>
+
+    @*Auto redirect with countdown*@
+    <script>
+        var seconds = 2;
+        var foo;
+
+        function redirect() {
+            document.location.href = './Index';
+        }
+
+        function updateSecs() {
+            document.getElementById("seconds").innerHTML = seconds;
+            seconds--;
+            if (seconds == -1) {
+                clearInterval(foo);
+                redirect();
+            }
+        }
+
+        function countdownTimer() {
+            foo = setInterval(function () {
+                updateSecs()
+            }, 1000);
+        }
+        countdownTimer();
+    </script>
+</div>
