@@ -1,15 +1,17 @@
 ﻿@page "{no}"
 @model SAMS.Pages.Dormitories.VacanciesModel
 @{
+    ViewData["Title"] = "Vacant rooms";
 }
-<h5>Vacant rooms for @Model.Dormitory.Name dormitory</h5>
+<h5> Vacant rooms for @Model.Dormitory.Name dormitory</h5>
 
-<table class="table">
+<table class="table table-hover table-dark">
     <thead>
         <tr>
             <th>Place No.</th>
             <th>Room No.</th>
             <th>Rent Per Semester</th>
+            <th>Manage</th>
         </tr>
     </thead>
     <tbody>
