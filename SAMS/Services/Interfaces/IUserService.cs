@@ -2,7 +2,7 @@
 {
     public interface IUserService
     {
-        public void SignUp(string username, string password, int studentNo);
-        public User Login(string username, string password);
+        public Task SignUpAsync(string username, string password, int studentNo);
+        public Task<User> LoginAsync(string username, string password);
     }
 }

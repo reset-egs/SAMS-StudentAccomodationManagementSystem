@@ -8,14 +8,14 @@
             this.service = service;
         }
 
-        public User Login(string username, string password)
+        public async Task<User> LoginAsync(string username, string password)
         {
-            return service.Login(username, password);
+            return await service.LoginAsync(username, password);
         }
 
-        public void SignUp(string username, string password, int studentNo)
+        public async Task SignUpAsync(string username, string password, int studentNo)
         {
-            service.SignUp(username, password, studentNo);
+            await service.SignUpAsync(username, password, studentNo);
         }
     }
 }
