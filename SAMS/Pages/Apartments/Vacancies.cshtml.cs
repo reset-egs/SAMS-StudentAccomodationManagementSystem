@@ -11,10 +11,10 @@ namespace SAMS.Pages.Apartments
         public IEnumerable<Room> Rooms { get; set; }
 
         public Apartment Apartment { get; set; }
-        public void OnGet(int no)
+        public async Task OnGet(int no)
         {
-            Rooms = service.GetVacantRooms(no);
-            Apartment = service.GetApartmentByNo(no);
+            Rooms = await service.GetVacantRoomsAsync(no);
+            Apartment = await service.GetApartmentByNoAsync(no);
         }
     }
 }

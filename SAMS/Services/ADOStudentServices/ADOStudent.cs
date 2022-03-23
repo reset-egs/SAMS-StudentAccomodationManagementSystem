@@ -10,12 +10,7 @@
             connectionString = configuration.GetConnectionString("SAMSContext");
         }
 
-        public void AddStudent(Student student)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Student GetStudentByNo(int no)
+        public async Task<Student> GetStudentByNoAsync(int no)
         {
             Student result = new Student();
 
@@ -23,11 +18,11 @@
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         Student s = new Student();
                         s.Student_No = Convert.ToInt32(reader[0]);
@@ -42,18 +37,18 @@
             return result;
         }
 
-        public IEnumerable<Student> GetStudents()
+        public async Task<IEnumerable<Student>> GetStudentsAsync()
         {
             List<Student> results = new List<Student>();
             string query = "SELECT * FROM Student";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         Student s = new Student();
                         s.Student_No = Convert.ToInt32(reader[0]);
@@ -94,53 +89,53 @@
             return waitingList;
         }
 
-        public void DeleteStudent(int no)
+        public async Task DeleteStudentAsync(int no)
         {
             string query = $"DELETE FROM Student WHERE Student.Student_No = {no}";
 
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using(SqlCommand command = new SqlCommand(query, connection))
                 {
-                    int numberOfRowsAffected = command.ExecuteNonQuery();
+                    int numberOfRowsAffected = await command.ExecuteNonQueryAsync();
                 }
             }
         }
 
-        public void UpdateStudent(Student student)
+        public async Task UpdateStudentAsync(Student student)
         {
             string query = $"UPDATE Student SET Has_Room = 1  WHERE Student_No = {student.Student_No}";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    int numberOfRowsAffected = command.ExecuteNonQuery();
+                    int numberOfRowsAffected = await command.ExecuteNonQueryAsync();
                 }
             } 
         }
 
-        public StudentLeasingsViewModel GetStudentLeasings(int no)
+        public async Task<StudentLeasingsViewModel> GetStudentLeasingsAsync(int no)
         {
             StudentLeasingsViewModel s = new StudentLeasingsViewModel();
             string query = $"SELECT Student.Student_No, Student.SName, Leasing.Leasing_No, Leasing.Place_No, Room.Rent_Per_Semester, Room.Dormitory_No, Room.Appart_No FROM Student JOIN Leasing ON Student.Student_No = Leasing.Student_No JOIN Room ON Leasing.Place_No = Room.Place_No WHERE Student.Student_No = {no}";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         s.Student_No = Convert.ToInt32(reader[0]);
                         s.SName = Convert.ToString(reader[1]);
                         s.Leasing_No = Convert.ToInt32(reader[2]);
                         s.Place_No = Convert.ToInt32(reader[3]);
                         s.Rent_Per_Semester = Convert.ToInt32(reader[4]);
-                        if (reader.IsDBNull(5))
+                        if (await reader.IsDBNullAsync(5))
                         {
                             s.Dormitory_No = null;
                             s.Appart_No = Convert.ToInt32(reader[6]);

@@ -8,19 +8,19 @@
             this.service = service;
         }
 
-        public IEnumerable<Apartment> GetApartments()
+        public async Task<IEnumerable<Apartment>> GetApartmentsAsync()
         {
-            return service.GetApartments();
+            return await service.GetApartmentsAsync();
         }
 
-        public Apartment GetApartmentByNo(int no)
+        public async Task<Apartment> GetApartmentByNoAsync(int no)
         {
-            return service.GetApartmentByNo(no);
+            return await service.GetApartmentByNoAsync(no);
         }
 
-        public IEnumerable<Room> GetVacantRooms(int no)
+        public async Task<IEnumerable<Room>> GetVacantRoomsAsync(int no)
         {
-            return service.GetVacantRooms(no);
+            return await service.GetVacantRoomsAsync(no);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace SAMS.Pages.Apartments
         [BindProperty]
         public IEnumerable<Apartment> Apartments { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Apartments = service.GetApartments();
+            Apartments = await service.GetApartmentsAsync();
         }
     }
 }

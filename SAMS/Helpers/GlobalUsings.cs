@@ -12,3 +12,4 @@ global using System.Data.SqlClient;
 global using System.ComponentModel.DataAnnotations;
 global using SAMS.Services.Interfaces;
 global using SAMS.Services.ADOUserServices;
+global using Microsoft.EntityFrameworkCore;

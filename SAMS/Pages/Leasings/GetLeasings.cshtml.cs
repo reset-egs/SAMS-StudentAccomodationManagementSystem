@@ -11,9 +11,9 @@ namespace SAMS.Pages.Leasings
         [BindProperty]
         public IEnumerable<Leasing> Leasings { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Leasings = service.GetLeasings();
+            Leasings = await service.GetLeasingsAsync();
         }
     }
 }

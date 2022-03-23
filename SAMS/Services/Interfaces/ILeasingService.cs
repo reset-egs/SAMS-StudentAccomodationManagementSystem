@@ -2,8 +2,7 @@
 {
     public interface ILeasingService
     {
-        public IEnumerable<Leasing> GetLeasings();
-        public void CreateLeasing(int place_No, Leasing l);
-        public void UpdateLeasing(Leasing leasing);
+        public Task<IEnumerable<Leasing>> GetLeasingsAsync();
+        public Task CreateLeasingAsync(int place_No, Leasing l);
     }
 }

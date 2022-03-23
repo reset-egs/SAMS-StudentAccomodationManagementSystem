@@ -10,18 +10,18 @@
             connectionString = configuration.GetConnectionString("SAMSContext");
         }
 
-        public IEnumerable<Dormitory> GetDormitories()
+        public async Task<IEnumerable<Dormitory>> GetDormitoriesAsync()
         {
             List<Dormitory> results = new List<Dormitory>();
             string query = "SELECT * FROM Dormitory";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         Dormitory d = new Dormitory();
                         d.Dormitory_No = Convert.ToInt32(reader[0]);
@@ -34,18 +34,18 @@
             return results;
         }
 
-        public IEnumerable<Room> GetVacantRooms(int no)
+        public async Task<IEnumerable<Room>> GetVacantRoomsAsync(int no)
         {
             List<Room> results = new List<Room>();
             string query = $"SELECT * FROM Room WHERE Room.Dormitory_No = {no} AND Room.Occupied != 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         Room r = new Room();
                         r.Place_No = Convert.ToInt32(reader[0]);
@@ -70,18 +70,18 @@
             return results;
         }
 
-        public Dormitory GetDormitoryByNo(int no)
+        public async Task<Dormitory> GetDormitoryByNoAsync(int no)
         {
             Dormitory result = new Dormitory();
             string query = $"SELECT * FROM Dormitory WHERE Dormitory.Dormitory_No = {no}";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         Dormitory d = new Dormitory();
                         d.Dormitory_No = Convert.ToInt32(reader[0]);

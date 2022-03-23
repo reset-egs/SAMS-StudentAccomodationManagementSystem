@@ -14,9 +14,9 @@ namespace SAMS.Pages.Rooms
         [BindProperty]
         public IEnumerable<Room> Rooms { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Rooms = service.GetRooms();
+            Rooms = await service.GetRoomsAsync();
         }
     }
 }

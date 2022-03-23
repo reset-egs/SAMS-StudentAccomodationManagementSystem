@@ -10,15 +10,15 @@ namespace SAMS.Pages.Students
 
         public Student Student { get; set; }
 
-        public void OnGet(int no)
+        public async Task Async(int no)
         {
-            Student = service.GetStudentByNo(no);
+            Student = await service.GetStudentByNoAsync(no);
         }
 
-        public IActionResult OnPost(int no)
+        public async Task<IActionResult> OnPostAsync(int no)
         {
-            Student = service.GetStudentByNo(no);
-            service.DeleteStudent(Student.Student_No);
+            Student = await service.GetStudentByNoAsync(no);
+            await service.DeleteStudentAsync(Student.Student_No);
             return RedirectToPage("GetStudents");
         }
     }

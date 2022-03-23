@@ -10,18 +10,18 @@
             connectionString = configuration.GetConnectionString("SAMSContext");
         }
 
-        public IEnumerable<Room> GetRooms()
+        public async Task<IEnumerable<Room>> GetRoomsAsync()
         {
             List<Room> results = new List<Room>();
             string query = "SELECT * FROM Room";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         Room r = new Room();
                         r.Place_No = Convert.ToInt32(reader[0]);
@@ -45,16 +45,16 @@
             }
             return results;
         }
-        public void UpdateRoom (int place_No)
+        public async Task UpdateRoomAsync(int place_No)
         {
             string query = $"UPDATE Room SET Occupied = 1  WHERE Place_No = {place_No}";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    int numberOfRowsAffected = command.ExecuteNonQuery();
+                    int numberOfRowsAffected = await command.ExecuteNonQueryAsync();
                 }
             }
         }
