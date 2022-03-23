@@ -2,8 +2,8 @@
 {
     public interface IDormitoryService
     {
-        public IEnumerable<Dormitory> GetDormitories();
-        public Dormitory GetDormitoryByNo(int no);
-        public IEnumerable<Room> GetVacantRooms(int no);
+        public Task<IEnumerable<Dormitory>> GetDormitoriesAsync();
+        public Task<Dormitory> GetDormitoryByNoAsync(int no);
+        public Task<IEnumerable<Room>> GetVacantRoomsAsync(int no);
     }
 }

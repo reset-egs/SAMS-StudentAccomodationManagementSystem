@@ -11,9 +11,9 @@ namespace SAMS.Pages.Dormitories
         [BindProperty]
         public IEnumerable<Dormitory> Dormitories { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Dormitories = service.GetDormitories();
+            Dormitories = await service.GetDormitoriesAsync();
         }
     }
 }

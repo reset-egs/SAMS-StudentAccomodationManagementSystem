@@ -2,12 +2,11 @@
 {
     public interface IStudentService
     {
-        public IEnumerable<Student> GetStudents();
-        public Student GetStudentByNo(int no);
-        public void UpdateStudent(Student student);
-        public void AddStudent(Student student);
-        public void DeleteStudent(int no);
+        public Task<IEnumerable<Student>> GetStudentsAsync();
+        public Task<Student> GetStudentByNoAsync(int no);
+        public Task UpdateStudentAsync(Student student);
+        public Task DeleteStudentAsync(int no);
         public IEnumerable<Student> GetWaitingList();
-        public StudentLeasingsViewModel GetStudentLeasings(int no);
+        public Task<StudentLeasingsViewModel> GetStudentLeasingsAsync(int no);
     }
 }

@@ -13,22 +13,17 @@
             this.rService = rService;
         }
 
-        public void CreateLeasing(int place_No, Leasing l)
+        public async Task CreateLeasingAsync(int place_No, Leasing l)
         {
-            Student student = sService.GetWaitingList().FirstOrDefault();
-            service.CreateLeasing(place_No, student, l);
-            sService.UpdateStudent(student);
-            rService.UpdateRoom(place_No);
+            Student? student = sService.GetWaitingList().FirstOrDefault();
+            await service.CreateLeasingAsync(place_No, student, l);
+            await sService.UpdateStudentAsync(student);
+            await rService.UpdateRoomAsync(place_No);
         }
 
-        public IEnumerable<Leasing> GetLeasings()
+        public async Task<IEnumerable<Leasing>> GetLeasingsAsync()
         {
-            return service.GetLeasings();
-        }
-
-        public void UpdateLeasing(Leasing leasing)
-        {
-            service.UpdateLeasing(leasing);
+            return await service.GetLeasingsAsync();
         }
     }
 }

@@ -8,31 +8,25 @@
             this.service = service;
         }
 
-        public void AddStudent(Student student)
+        public async Task DeleteStudentAsync(int no)
         {
-            service.AddStudent(student);
+            await service.DeleteStudentAsync(no);
         }
 
 
-        public void DeleteStudent(int no)
+        public async Task<Student> GetStudentByNoAsync(int no)
         {
-            service.DeleteStudent(no);
+            return await service.GetStudentByNoAsync(no);
         }
 
-
-        public Student GetStudentByNo(int no)
+        public async Task<StudentLeasingsViewModel> GetStudentLeasingsAsync(int no)
         {
-            return service.GetStudentByNo(no);
+            return await service.GetStudentLeasingsAsync(no);
         }
 
-        public StudentLeasingsViewModel GetStudentLeasings(int no)
+        public async Task<IEnumerable<Student>> GetStudentsAsync()
         {
-            return service.GetStudentLeasings(no);
-        }
-
-        public IEnumerable<Student> GetStudents()
-        {
-            return service.GetStudents();
+            return await service.GetStudentsAsync();
         }
 
         public IEnumerable<Student> GetWaitingList()
@@ -40,9 +34,9 @@
             return service.GetWaitingList();
         }
 
-        public void UpdateStudent(Student student)
+        public async Task UpdateStudentAsync(Student student)
         {
-            service.UpdateStudent(student);
+            await service.UpdateStudentAsync(student);
         }
 
     }

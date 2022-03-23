@@ -10,36 +10,36 @@
             connectionString = configuration.GetConnectionString("SAMSContext");
         }
 
-        public void CreateLeasing(int place_No, Student s, Leasing l)
+        public async Task CreateLeasingAsync(int place_No, Student s, Leasing l)
         {
             string query = $"Insert into Leasing Values(@student_No, @place_No, @date_From, @date_To)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("student_No", s.Student_No);
                     command.Parameters.AddWithValue("place_No", place_No);
                     command.Parameters.AddWithValue("date_From", l.Date_From);
                     command.Parameters.AddWithValue("date_To", l.Date_To) ;
-                    int numberOfRowsAffected = command.ExecuteNonQuery();
+                    int numberOfRowsAffected = await command.ExecuteNonQueryAsync();
                 }
             }
         }
 
-        public IEnumerable<Leasing> GetLeasings()
+        public async Task<IEnumerable<Leasing>> GetLeasingsAsync()
         {
             List<Leasing> results = new List<Leasing>();
             string query = "SELECT * FROM Leasing";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
+                await connection.OpenAsync();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         Leasing l = new Leasing();
                         l.Leasing_No = Convert.ToInt32(reader[0]);
@@ -52,11 +52,6 @@
                 }
             }
             return results;
-        }
-
-        public void UpdateLeasing(Leasing leasing)
-        {
-            throw new NotImplementedException();
         }
     }
 }

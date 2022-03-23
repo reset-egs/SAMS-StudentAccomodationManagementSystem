@@ -15,9 +15,9 @@ namespace SAMS.Pages.Students
         public IEnumerable<Student> Students { get; set; }
         public bool WaitingListOpen { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Students = service.GetStudents();
+            Students = await service.GetStudentsAsync();
             WaitingListOpen = false;
         }
         public void OnPost()

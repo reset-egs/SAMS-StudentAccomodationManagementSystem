@@ -2,7 +2,7 @@
 {
     public interface IRoomService
     {
-        public IEnumerable<Room> GetRooms();
-        public void UpdateRoom(int place_No);
+        public Task<IEnumerable<Room>> GetRoomsAsync();
+        public Task UpdateRoomAsync(int place_No);
     }
 }

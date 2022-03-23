@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace SAMS.Pages.Students
 {
     public class StudentLeasingsModel : PageModel
@@ -14,9 +11,9 @@ namespace SAMS.Pages.Students
 
         public StudentLeasingsViewModel StudentLeasingsViewModel { get; set; }
 
-        public void OnGet(int no)
+        public async Task OnGetAsync(int no)
         {
-            StudentLeasingsViewModel = service.GetStudentLeasings(no);
+            StudentLeasingsViewModel = await service.GetStudentLeasingsAsync(no);
         }
     }
 }

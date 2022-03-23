@@ -20,9 +20,9 @@ namespace SAMS.Pages.Leasings
         {
             Place_No = pNo;
         }
-        public IActionResult OnPost(int pNo)
+        public async Task<IActionResult> OnPostAsync(int pNo)
         {
-            service.CreateLeasing(pNo, Leasing);
+            await service.CreateLeasingAsync(pNo, Leasing);
             return RedirectToPage("GetLeasings");
         }
     }

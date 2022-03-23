@@ -8,15 +8,15 @@
             this.service = service;
         }
 
-        public IEnumerable<Room> GetRooms()
+        public async Task<IEnumerable<Room>> GetRoomsAsync()
         {
-            return service.GetRooms();
+            return await service.GetRoomsAsync();
         }
 
 
-        public void UpdateRoom(int place_No)
+        public async Task UpdateRoomAsync(int place_No)
         {
-            service.UpdateRoom(place_No);
+            await service.UpdateRoomAsync(place_No);
         }
     }
 }

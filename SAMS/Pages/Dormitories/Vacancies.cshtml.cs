@@ -13,10 +13,10 @@ namespace SAMS.Pages.Dormitories
 
         public Dormitory Dormitory { get; set; }
 
-        public void OnGet(int no)
+        public async Task OnGetAsync(int no)
         {
-            Rooms = service.GetVacantRooms(no);
-            Dormitory = service.GetDormitoryByNo(no);
+            Rooms = await service.GetVacantRoomsAsync(no);
+            Dormitory = await service.GetDormitoryByNoAsync(no);
         }
     }
 }

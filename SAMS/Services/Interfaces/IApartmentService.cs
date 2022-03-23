@@ -2,8 +2,8 @@
 {
     public interface IApartmentService
     {
-        public IEnumerable<Apartment> GetApartments();
-        public IEnumerable<Room> GetVacantRooms(int no);
-        public Apartment GetApartmentByNo(int no);
+        public Task<IEnumerable<Apartment>> GetApartmentsAsync();
+        public Task<IEnumerable<Room>> GetVacantRoomsAsync(int no);
+        public Task<Apartment> GetApartmentByNoAsync(int no);
     }
 }
