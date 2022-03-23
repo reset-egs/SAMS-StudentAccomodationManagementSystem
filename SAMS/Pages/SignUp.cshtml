@@ -1,0 +1,18 @@
+﻿@page
+@model SAMS.Pages.SignUpModel
+@{
+}
+<div class="loginBox"> <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
+    <h3>Sign in here</h3>
+    <form method="post">
+        <div class="inputBox"> 
+            <input asp-for="@Model.User.Username" id="uname" type="text" name="Username" placeholder="Username"> 
+            <input asp-for="@Model.User.Password" id="pass" type="password" name="Password" placeholder="Password"> 
+            <input asp-for="@Model.User.Student_No" id="no" type="number" name="Student_No" placeholder="Student No."> 
+        </div> 
+            <input type="submit" name="" value="Login">
+    </form>
+    <div class="text-center">
+        <a style="color: #2596be;" asp-page="/SignUp">Login</a>
+    </div>
+</div>
