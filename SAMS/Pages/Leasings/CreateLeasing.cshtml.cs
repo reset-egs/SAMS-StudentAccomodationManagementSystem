@@ -13,9 +13,12 @@ namespace SAMS.Pages.Leasings
         [BindProperty]
         public Leasing Leasing { get; set; }
 
-        public void OnGet()
+        [BindProperty(SupportsGet = true)]
+        public int Place_No { get;set; }
+
+        public void OnGet(int pNo)
         {
-            
+            Place_No = pNo;
         }
         public IActionResult OnPost(int pNo)
         {

@@ -1,7 +1,10 @@
 ﻿@page "{pNo}"
 @model SAMS.Pages.Leasings.CreateLeasingModel
 @{
+    ViewData["Title"] = "New leasing";
 }
+<h5>Create new leasing for room No. @Model.Place_No</h5>
+
 <div class="row">
     <div class="col-md-4">
         <form method="post">

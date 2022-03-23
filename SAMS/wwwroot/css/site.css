@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+h5 {
+    color: lightgray;
+    font:Source Sans Pro;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+    margin: 1%;
+    text-align: center;
+}
