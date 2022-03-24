@@ -19,10 +19,10 @@ namespace SAMS.Pages
         {
         }
 
-        public IActionResult OnPost(User user)
+        public async Task<IActionResult> OnPostAsync(User user)
         {
             user = User;
-            service.SignUp(user.Username, user.Password, user.Student_No);
+            await service.SignUpAsync(user.Username, user.Password, user.Student_No);
             return RedirectToPage("/Index");
         }
     }

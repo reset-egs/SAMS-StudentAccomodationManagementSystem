@@ -22,12 +22,12 @@ namespace SAMS.Pages
         {
         }
 
-        public IActionResult OnPost(string username, string password)
+        public async Task<IActionResult> OnPostAsync(string username, string password)
         {
             username = Username;
             password = Password;
             User LoggedInUser = new User();
-            LoggedInUser = service.Login(Username, Password);
+            LoggedInUser = await service.LoginAsync(Username, Password);
 
             if(LoggedInUser.Username != null)
             {
