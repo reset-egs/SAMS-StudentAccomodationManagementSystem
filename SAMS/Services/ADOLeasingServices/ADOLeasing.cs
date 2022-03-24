@@ -13,6 +13,7 @@
         public async Task CreateLeasingAsync(int place_No, Student s, Leasing l)
         {
             string query = $"Insert into Leasing Values(@student_No, @place_No, @date_From, @date_To)";
+            string query2 = $"INSERT INTO Message VALUES(@student_No, @message)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -24,6 +25,12 @@
                     command.Parameters.AddWithValue("date_From", l.Date_From);
                     command.Parameters.AddWithValue("date_To", l.Date_To) ;
                     int numberOfRowsAffected = await command.ExecuteNonQueryAsync();
+                }
+                using (SqlCommand command1 = new SqlCommand(query2, connection))
+                {
+                    command1.Parameters.AddWithValue("student_No", s.Student_No);
+                    command1.Parameters.AddWithValue("message", $"Congratulations! You have been assigned a room with place number {place_No}");
+                    int numberOfRowsAffected2 = await command1.ExecuteNonQueryAsync();
                 }
             }
         }

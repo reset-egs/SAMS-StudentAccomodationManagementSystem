@@ -31,7 +31,7 @@ namespace SAMS.Pages
 
             if(LoggedInUser.Username != null)
             {
-                HttpContext.Session.SetString("logged_in", "true");
+                HttpContext.Session.SetString("logged_in", $"{LoggedInUser.Student_No}");
                 return RedirectToPage("/Welcome");
             }
             else

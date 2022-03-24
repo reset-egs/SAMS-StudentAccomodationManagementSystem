@@ -1,0 +1,22 @@
+﻿@page
+@model SAMS.Pages.MessageModel
+@{
+}
+    <h5>Messages</h5>
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th>Message ID</th>
+            <th>Student No.</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>@Model.Message.Id</td>
+                <td>@Model.Message.Student_No</td>
+                <td>@Model.Message.MessageText</td>
+            </tr>
+    </tbody>
+</table>
