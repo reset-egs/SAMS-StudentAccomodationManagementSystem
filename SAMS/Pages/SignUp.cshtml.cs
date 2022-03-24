@@ -21,9 +21,22 @@ namespace SAMS.Pages
 
         public async Task<IActionResult> OnPostAsync(User user)
         {
-            user = User;
-            await service.SignUpAsync(user.Username, user.Password, user.Student_No);
-            return RedirectToPage("/Index");
-        }
+            //if (ModelState.IsValid == true)
+            //{
+                user = User;
+/*                try {*/ await service.SignUpAsync(user.Username, user.Password, user.Student_No);
+                    return RedirectToPage("/Index");
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            return Page();
+        //        }
+                
+        //    }
+        //    else
+        //    {
+        //        return Page();
+        //    }
+      }
     }
 }

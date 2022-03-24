@@ -6,9 +6,18 @@
     <h3>Sign up here</h3>
     <form method="post">
         <div class="inputBox"> 
-            <input asp-for="@Model.User.Username" id="uname" type="text" name="Username" placeholder="Username"> 
+            <div>
+            <input asp-for="@Model.User.Username"id="uname" type="text" name="Username" placeholder="Username"> 
+            <span asp-validation-for="@Model.User.Username"></span>
+    </div>
+    <div>
             <input asp-for="@Model.User.Password" id="pass" type="password" name="Password" placeholder="Password"> 
+            <span asp-validation-for="@Model.User.Password"></span>
+    </div>
+    <div>
             <input asp-for="@Model.User.Student_No" id="no" type="number" name="Student_No" placeholder="Student No."> 
+            <span asp-validation-for="@Model.User.Student_No"></span>
+    </div>
         </div> 
             <input type="submit" name="" value="Sign Up">
     </form>
