@@ -14,9 +14,9 @@
         }
 
 
-        public async Task UpdateRoomAsync(int place_No)
+        public async Task UpdateRoomAsync(int place_No, bool occupied)
         {
-            await service.UpdateRoomAsync(place_No);
+            await service.UpdateRoomAsync(place_No, occupied);
         }
     }
 }

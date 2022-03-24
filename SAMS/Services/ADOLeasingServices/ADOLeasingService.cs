@@ -18,7 +18,7 @@
             Student? student = sService.GetWaitingList().FirstOrDefault();
             await service.CreateLeasingAsync(place_No, student, l);
             await sService.UpdateStudentAsync(student);
-            await rService.UpdateRoomAsync(place_No);
+            await rService.UpdateRoomAsync(place_No, true);
         }
 
         public async Task<IEnumerable<Leasing>> GetLeasingsAsync()

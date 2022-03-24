@@ -3,14 +3,17 @@
     public class ADOStudentService : IStudentService
     {
         private ADOStudent service;
-        public ADOStudentService(ADOStudent service)
+        private ADORoom rService;
+        public ADOStudentService(ADOStudent service, ADORoom rService)
         {
             this.service = service;
+            this.rService = rService;
         }
 
         public async Task DeleteStudentAsync(int no)
         {
             await service.DeleteStudentAsync(no);
+            rService.UpdateRoomAsync(no, false);
         }
 
 

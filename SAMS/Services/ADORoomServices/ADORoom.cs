@@ -45,9 +45,10 @@
             }
             return results;
         }
-        public async Task UpdateRoomAsync(int place_No)
+        public async Task UpdateRoomAsync(int place_No, bool occupied)
         {
-            string query = $"UPDATE Room SET Occupied = 1  WHERE Place_No = {place_No}";
+            
+            string query = $"UPDATE Room SET Occupied = {occupied}  WHERE Place_No = {place_No}";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

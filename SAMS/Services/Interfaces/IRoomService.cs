@@ -3,6 +3,6 @@
     public interface IRoomService
     {
         public Task<IEnumerable<Room>> GetRoomsAsync();
-        public Task UpdateRoomAsync(int place_No);
+        public Task UpdateRoomAsync(int place_No, bool occupied);
     }
 }
