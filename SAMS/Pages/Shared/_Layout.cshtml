@@ -25,9 +25,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><img src="~/zealand.png" width="75px" alt="Zealand"></li>
+                        <li class="navbar-brand"><img src="~/zealand.png" width="80px" alt="Zealand"></li>
                         <li class="nav-item"> 
-                            <a class="nav-link active" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Apartments/GetApartments">Apartments</a>
@@ -70,12 +70,6 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - SAMS - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
