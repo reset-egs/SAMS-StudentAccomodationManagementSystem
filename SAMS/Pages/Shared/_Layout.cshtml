@@ -44,10 +44,10 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Students/GetStudents">Students</a>
                         </li>
-                        @if(login == "true")
+                        @if(login != null)
                         {
                             <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Messages">Messages</a>
+                            <a class="nav-link" asp-area="" asp-page="/Message">Messages</a>
                             </li>
                             <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Logout">Logout</a>

@@ -52,5 +52,29 @@
             }
             return result;
         }
+
+        public async Task<Message> GetMessageAsync(string username)
+        {
+            Message message = new Message();
+            string query = $"SELECT * FROM Message WHERE STR(Message.Student_No) = {username}";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while(await reader.ReadAsync())
+                    {
+                        Message m = new Message();
+                        m.Id = Convert.ToInt32(reader[0]);
+                        m.Student_No = Convert.ToInt32(reader[1]);
+                        m.MessageText = Convert.ToString(reader[2]);
+                        message = m;
+                    }
+                }
+            }
+            return message;
+        }
     }
 }
