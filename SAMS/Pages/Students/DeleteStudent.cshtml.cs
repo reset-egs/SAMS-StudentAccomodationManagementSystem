@@ -10,7 +10,7 @@ namespace SAMS.Pages.Students
 
         public Student Student { get; set; }
 
-        public async Task Async(int no)
+        public async Task OnGetAsync(int no)
         {
             Student = await service.GetStudentByNoAsync(no);
         }
