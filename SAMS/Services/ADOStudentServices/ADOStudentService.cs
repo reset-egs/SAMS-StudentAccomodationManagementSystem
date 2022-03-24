@@ -12,8 +12,13 @@
 
         public async Task DeleteStudentAsync(int no)
         {
+            StudentLeasingsViewModel l = await service.GetStudentLeasingsAsync(no);
+            if (l.Place_No != 0)
+            {
+                await rService.UpdateRoomAsync(l.Place_No, false);
+            }
             await service.DeleteStudentAsync(no);
-            rService.UpdateRoomAsync(no, false);
+
         }
 
 

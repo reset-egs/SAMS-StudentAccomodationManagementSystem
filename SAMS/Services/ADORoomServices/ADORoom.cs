@@ -47,8 +47,8 @@
         }
         public async Task UpdateRoomAsync(int place_No, bool occupied)
         {
-            
-            string query = $"UPDATE Room SET Occupied = {occupied}  WHERE Place_No = {place_No}";
+            int occupancy = occupied ? 1 : 0;
+            string query = $"UPDATE Room SET Room.Occupied = {occupancy}  WHERE Room.Place_No = {place_No}";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
