@@ -29,6 +29,7 @@ else
         </tr>
     </thead>
     <tbody>
+        
         @foreach(var item in Model.Students)
         {
             <tr>
@@ -38,7 +39,17 @@ else
                 <td>@item.Has_Room</td>
                 <td>@item.Registration_Date.ToLongDateString()</td>
                 <td><a asp-page="DeleteStudent" asp-route-no="@item.Student_No" class="btn btn-danger">Delete</a>
-                    <a asp-page="StudentLeasings" asp-route-no="@item.Student_No" class="btn btn-primary">Leasings</a></td>
+                    @if(Model.WaitingListOpen == false)
+                    {
+            @foreach (var leasing in Model.Leasings)
+              {
+                        @if(item.Student_No == leasing.Student_No)
+                        {
+                            <a asp-page="StudentLeasings" asp-route-no="@item.Student_No" class="btn btn-primary">Leasings</a>
+                        }
+              }
+                    }
+                    </td>
             </tr>
         }
     </tbody>

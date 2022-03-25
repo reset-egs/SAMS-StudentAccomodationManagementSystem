@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace SAMS.Pages
 {
     public class LoginModel : PageModel
@@ -27,9 +24,17 @@ namespace SAMS.Pages
             username = Username;
             password = Password;
             User LoggedInUser = new User();
-            LoggedInUser = await service.LoginAsync(Username, Password);
+            try
+            {
+                LoggedInUser = await service.LoginAsync(Username, Password);
+            }
+            catch (Exception ex)
+            {
+                return Page();
+            }
 
-            if(LoggedInUser.Username != null)
+
+            if (LoggedInUser.Username != null)
             {
                 HttpContext.Session.SetString("logged_in", $"{LoggedInUser.Student_No}");
                 return RedirectToPage("/Welcome");
@@ -38,7 +43,7 @@ namespace SAMS.Pages
             {
                 return RedirectToPage("/Error");
             }
-            
+
         }
     }
 }
